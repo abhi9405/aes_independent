@@ -254,9 +254,9 @@ module vlog_module
 			6'b011111: readdata <= data_output_decrypt[3];
 			
 			
-			6'b100001: readdata = status_reg;
+			6'b100001: readdata <= status_reg;
           			
-			6'b111111: readdata = {31'h0,done_encrypt};
+			6'b111111: readdata <= {31'h0,done_encrypt};
           		
 			default: readdata = 0;
 		endcase
