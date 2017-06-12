@@ -272,38 +272,40 @@ module vlog_aes
 			6'b011110: readdata <= data_output_decrypt[2];
 			6'b011111: readdata <= data_output_decrypt[3];
 			
-			/*6'b000000: readdata <= next_key_encrypt[0];
-			6'b000001: readdata <= next_key_encrypt[1];
-			6'b000010: readdata <= next_key_encrypt[2];
-			6'b000011: readdata <= next_key_encrypt[3];
+
+
+			6'b000000: readdata <= key_encrypt[0];
+			6'b000001: readdata <= key_encrypt[1];
+			6'b000010: readdata <= key_encrypt[2];
+			6'b000011: readdata <= key_encrypt[3];
 				
-			6'b000100: readdata <= next_key_decrypt[0];
-			6'b000101: readdata <= next_key_decrypt[1];
-			6'b000110: readdata <= next_key_decrypt[2];
-			6'b000111: readdata <= next_key_decrypt[3];
-				
-			6'b001000: readdata <= next_data_input_encrypt[0];
-			6'b001001: readdata <= next_data_input_encrypt[1];
-			6'b001010: readdata <= next_data_input_encrypt[2];
-			6'b001011: readdata <= next_data_input_encrypt[3];
+			6'b000100: readdata <= key_decrypt[0];
+			6'b000101: readdata <= key_decrypt[1];
+			6'b000110: readdata <= key_decrypt[2];
+			6'b000111: readdata <= key_decrypt[3];
 			
-			6'b001100: readdata <= next_data_input_decrypt[0];
-			6'b001101: readdata <= next_data_input_decrypt[1];
-			6'b001110: readdata <= next_data_input_decrypt[2];
-			6'b001111: readdata <= next_data_input_decrypt[3];
+			6'b001000: readdata <= data_input_encrypt[0];
+			6'b001001: readdata <= data_input_encrypt[1];
+			6'b001010: readdata <= data_input_encrypt[2];
+			6'b001011: readdata <= data_input_encrypt[3];
+		
+			6'b001100: readdata <= data_input_decrypt[0];
+			6'b001101: readdata <= data_input_decrypt[1];
+			6'b001110: readdata <= data_input_decrypt[2];
+			6'b001111: readdata <= data_input_decrypt[3];
 				
 			
-			6'b010000: readdata <= next_init_vector_encrypt[0];
-			6'b010001: readdata <= next_init_vector_encrypt[1];
-			6'b010010: readdata <= next_init_vector_encrypt[2];
-			6'b010011: readdata <= next_init_vector_encrypt[3];
+			6'b010000: readdata <= init_vector_encrypt[0];
+			6'b010001: readdata <= init_vector_encrypt[1];
+			6'b010010: readdata <= init_vector_encrypt[2];
+			6'b010011: readdata <= init_vector_encrypt[3];
 				
-			6'b010100: readdata <= next_init_vector_decrypt[0];
-			6'b010101: readdata <= next_init_vector_decrypt[1];
-			6'b010110: readdata <= next_init_vector_decrypt[2];
-			6'b010111: readdata <= next_init_vector_decrypt[3];
+			6'b010100: readdata <= init_vector_decrypt[0];
+			6'b010101: readdata <= init_vector_decrypt[1];
+			6'b010110: readdata <= init_vector_decrypt[2];
+			6'b010111: readdata <= init_vector_decrypt[3];
 					
-			6'b100000: readdata <= next_control_reg;*/
+			6'b100000: readdata <= control_reg;
 			
 			6'b100001: readdata <= status_reg;
           			
