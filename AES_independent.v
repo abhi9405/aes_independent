@@ -277,7 +277,7 @@ module vlog_module
           			
 			6'b111111: readdata <= {31'h0,done_encrypt};
           		
-			default: readdata = 0;
+			default: readdata <= 0;
 		endcase
 		
 		
