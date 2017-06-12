@@ -117,13 +117,13 @@ module vlog_module
 		status_reg[31:0] <= 32'h00000000;
 		state_e <= 2'd0;
 		state_d <= 2'd0;
-		next_state_e <= 2'd0;
-		next_state_d <= 2'd0;
-		next_status_reg <= 32'h0;
+		//next_state_e <= 2'd0;
+		//next_state_d <= 2'd0;
+		//next_status_reg <= 32'h0;
 	
 		
 		kld <= 1'b0;
-		next_kld <= 1'b0;
+		//next_kld <= 1'b0;
 		ld_encrypt <= 1'b0;
 		latch_encrypt <= 1'b0;
 		latch_encrypt_q <= 1'b0;
@@ -176,6 +176,25 @@ module vlog_module
 			
 		else										//// non reset condition
 		begin
+		
+		if (done_encrypt)
+	begin
+	data_output_encrypt[0] <= text_out_encrypt[127:96];
+	data_output_encrypt[1] <= text_out_encrypt[95:64];
+	data_output_encrypt[2] <= text_out_encrypt[63:32];
+	data_output_encrypt[3] <= text_out_encrypt[31:0];
+	end
+	
+	if (done_decrypt)
+	begin
+	data_output_decrypt[0] <= text_out_decrypt[127:96] ^ init_vector_decrypt[0] ;
+	data_output_decrypt[1] <= text_out_decrypt[95:64] ^ init_vector_decrypt[1];
+	data_output_decrypt[2] <= text_out_decrypt[63:32] ^ init_vector_decrypt[2];
+	data_output_decrypt[3] <= text_out_decrypt[31:0] ^ init_vector_decrypt[3];
+	
+	end
+	
+	
 			state_e[1:0] <= next_state_e[1:0];
 			state_d[1:0] <= next_state_d[1:0];
 			
@@ -407,25 +426,8 @@ module vlog_module
 
 	end	
 	
+
 	
-		always@ (posedge vclk)
-	if (done_encrypt)
-	begin
-	data_output_encrypt[0] <= text_out_encrypt[127:96];
-	data_output_encrypt[1] <= text_out_encrypt[95:64];
-	data_output_encrypt[2] <= text_out_encrypt[63:32];
-	data_output_encrypt[3] <= text_out_encrypt[31:0];
-	end
-	
-	always@ (posedge vclk)
-	if (done_decrypt)
-	begin
-	data_output_decrypt[0] <= text_out_decrypt[127:96] ^ init_vector_decrypt[0] ;
-	data_output_decrypt[1] <= text_out_decrypt[95:64] ^ init_vector_decrypt[1];
-	data_output_decrypt[2] <= text_out_decrypt[63:32] ^ init_vector_decrypt[2];
-	data_output_decrypt[3] <= text_out_decrypt[31:0] ^ init_vector_decrypt[3];
-	
-	end
 	
 endmodule		
   
